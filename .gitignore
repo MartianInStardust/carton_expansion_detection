@@ -1,0 +1,7 @@
+build/
+aiden_build/
+temp/
+cmake-build-debug/
+.idea/
+.vscode/
+data/

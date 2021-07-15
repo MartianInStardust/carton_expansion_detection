@@ -1,0 +1,58 @@
+
+#==============#
+# POINT CLOUD WITH IMAGE #
+#==============#
+
+################## ONLY POINT CLOUD #################
+sensor.name: "percipioRGBD"      
+
+downsample.method: voxelgrid  ## approximate_voxelgrid
+
+downsample.leaf_size: 6.0    ## 3.0 percipio best set 6.0
+
+filter.method: used_all_method # none_process statistical_outlier_removal conditional_removal used_all_method
+filter.mean_k: 50
+filter.field_name: "z"
+filter.min_limit: 0.0
+filter.max_limit: 1270
+
+standard.point_cloud_size: 3000 #!
+
+# standard.front_normal: [0.0, 0.0, 1.0] # linelaser
+standard.front_normal: [0.0220665, 0.516816, -0.855812] # percipio ,Positive direction: facing the observer 
+standard.ground_normal: [0.817561, 0.0, 0.575842]  
+
+# standard.ground_coeff: [0.817561, 0.0, 0.575842, 112.123] # linelaser
+standard.ground_coeff: [0.0221772, -0.865679, -0.500108, 593.882] # percipio 
+
+clusters.maxsize_segements: 3   # wait for judge
+clusters.min_points_size: 50
+clusters.max_points_size: 1000000
+clusters.num_neighbours: 30    # 10 if want the segments more fine
+clusters.normal_error_threshold: 3.0
+clusters.curvature_threshold: 1.0
+
+ground.fitting_dist_error: 0.3
+
+bottom.expect_points: 100
+bottom.fitting_angle_error: 3.0 #degree
+bottom.fitting_dist_error: 0.5 # 0.03 percipio best set 0.5
+
+debug.visualization: 1  # 1 for show, 0 for none
+
+## FM830
+depth.width: 1280
+depth.height: 960
+
+depth.intrinsic: [1050.85, 0.0, 643.055, 0.0, 1050.85, 491.978, 0.0, 0.0, 1.0]
+depth.extrinsic: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+depth.distortion: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+color.width: 1280
+color.height: 960
+
+color.intrinsic: [1092.88, 0.0, 678.154, 0.0, 1092.73, 465.01, 0.0, 0.0, 1.0]
+color.extrinsic: [0.999421, -0.00826928, 0.0329988, -23.9989, 0.00874996, 0.999857, -0.0144491, 0.0466949, -0.0328746, 0.0147295, 0.999351, -0.0590373, 0.0, 0.0, 0.0, 1.0]
+color.distortion: [-0.409555, 0.313108, -0.00285432, 0.00821963, 0.240569, -0.163562, 0.112712, 0.390324, -0.0167213, 0.0038893, 0.00575228, -0.00137087]
+
+contour.max_area: 500.0

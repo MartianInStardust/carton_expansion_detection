@@ -1,0 +1,39 @@
+
+#==============#
+# ONLY POINT CLOUD #
+#==============#
+
+################## ONLY POINT CLOUD #################
+sensor.name: "linelaser"      ## linelaser percipio3D percipioRGBD
+
+downsample.method: voxelgrid  ## approximate_voxelgrid
+
+downsample.leaf_size: 3.0    ## 3.0 percipio best set 6.0
+
+filter.method: none_process # none_process statistical_outlier_removal conditional_removal used_all_method
+filter.mean_k: 50
+filter.field_name: "z"
+filter.min_limit: 0.0
+filter.max_limit: 1270
+
+standard.point_cloud_size: 3000 #!
+
+standard.front_normal: [0.0, 0.0, 1.0] # linelaser
+standard.ground_normal: [0.817561, 0.0, 0.575842]  
+
+standard.ground_coeff: [0.817561, 0.0, 0.575842, 112.123] # linelaser
+
+clusters.maxsize_segements: 3   # wait for judge
+clusters.min_points_size: 50
+clusters.max_points_size: 1000000
+clusters.num_neighbours: 30    # 10 if want the segments more fine
+clusters.normal_error_threshold: 3.0
+clusters.curvature_threshold: 1.0
+
+ground.fitting_dist_error: 0.3
+
+bottom.expect_points: 100
+bottom.fitting_angle_error: 3.0 #degree
+bottom.fitting_dist_error: 0.03 # 0.03 percipio best set 0.5
+
+debug.visualization: 1  # 1 for show, 0 for none
